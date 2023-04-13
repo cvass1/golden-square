@@ -31,15 +31,11 @@ _Make a list of examples of what the method will take and return._
 ```ruby
 
 correct_grammar("Hello, world!") => true
-correct_grammar("Hello world!") => true
+correct_grammar("Hello world.") => true
 correct_grammar("Hello, world") => false
 correct_grammar("hello, world!") => false
 correct_grammar("hello world") => false
 correct_grammar("") => false
-
-
-
-
 
 
 ```
