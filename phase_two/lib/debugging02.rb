@@ -6,16 +6,15 @@ def encode(plaintext, key)
   return ciphertext_chars.join
 end
 
-# def decode(ciphertext, key)
-#   cipher = key.chars.uniq + (('a'...'z').to_a - key.chars)
-#   plaintext_chars = ciphertext.chars.map do |char|
-#     cipher[65 - char.ord]
-#   end
-#   return plaintext_chars.join
-# end
+def decode(ciphertext, key)
+  cipher = key.chars.uniq + (('a'...'z').to_a - key.chars)
+  plaintext_chars = ciphertext.chars.map do |char|
+    cipher[char.ord - 65]
+  end
+  return plaintext_chars.join
+end
 
-print encode("theswiftfoxjumpedoverthelazydog", "secretkey")
-# puts decode("EMBAXNKEKSYOVQTBJSWBDEMBPHZGJSL", "secretkey")
+puts decode("EMBAXNKEKSYOVQTBJSWBDEMBPHZGJSL", "secretkey")
 
 # Intended output:
 #
