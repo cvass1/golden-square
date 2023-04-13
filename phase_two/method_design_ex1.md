@@ -31,9 +31,9 @@ _Make a list of examples of what the method will take and return._
 
 ```ruby
 
-time_to_read("this book") => "0.01 minutes"
-time_to_read("") => "0 minutes"
-time_to_read(TWO_HUNDRED_WORDS) => "1 minute"
+time_to_read("this book") => "0.0 minutes"
+time_to_read("") => "0.0 minutes"
+time_to_read(TWO_HUNDRED_WORDS) => "1.0 minute"
 time_to_read(ONE_HUNDRED_WORDS) => "0.5 minutes"
 time_to_read(FOUR_HUNDRED_AND_FIFTEEN_WORDS) => "2.1 minutes"
 
