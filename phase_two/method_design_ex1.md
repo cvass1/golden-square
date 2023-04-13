@@ -1,4 +1,4 @@
-# {{PROBLEM}} Method Design Recipe
+# Reading Time Method Design Recipe
 
 ## 1. Describe the Problem
 
@@ -12,7 +12,7 @@ _Include the name of the method, its parameters, return value, and side effects.
 
 ```ruby
 
-# 'time_to_read' returns a time to read a given text assuming a reading rate
+# 'time_to_read' returns a time in minutes (rounded to 1dp) to read a given text assuming a reading rate of 200 words per minute
 reading_time = time_to_read(text)
 
 reading_time: a string (eg "0.5 minutes")
@@ -33,8 +33,9 @@ _Make a list of examples of what the method will take and return._
 
 time_to_read("this book") => "0.01 minutes"
 time_to_read("") => "0 minutes"
-time_to_read("hello hi hello hi hello hi hello hi hi hello hello hi hello hi hello hi hello hi hi hello") => "0.1 minutes"
-
+time_to_read(TWO_HUNDRED_WORDS) => "1 minute"
+time_to_read(ONE_HUNDRED_WORDS) => "0.5 minutes"
+time_to_read(FOUR_HUNDRED_AND_FIFTEEN_WORDS) => "2.1 minutes"
 
 
 ```
