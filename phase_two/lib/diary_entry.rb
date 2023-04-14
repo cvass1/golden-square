@@ -18,10 +18,12 @@ class DiaryEntry
   end
 
   def reading_time(wpm) 
+    fail "WPM must be above zero" if wpm <= 0
     (count_words.to_f/wpm).ceil.round(0) 
   end
 
   def reading_chunk(wpm, minutes) 
+    fail "WPM must be above zero" if wpm <= 0
     words_to_read = wpm * minutes
     reading_chunk = @contents.split(" ").slice(@last_word_read,@last_word_read+words_to_read).join(" ")
     @last_word_read += words_to_read

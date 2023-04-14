@@ -42,6 +42,12 @@ RSpec.describe DiaryEntry do
       expect(result).to eq 3
     end
 
+    it "eg it returns an error when WPM is 0 or less" do
+      diary_entry_1 = DiaryEntry.new("1st entry","hello world")
+      expect{diary_entry_1.reading_time(0)}.to raise_error "WPM must be above zero"
+  
+    end
+
   end
 
     # `wpm` is an integer representing the number
@@ -83,6 +89,12 @@ RSpec.describe DiaryEntry do
       result = diary_entry_1.reading_chunk(3,1)
       expect(result).to eq "hello again beautiful"
     end
+
+    it "eg it returns an error when WPM is 0 or less" do
+      diary_entry_1 = DiaryEntry.new("1st entry","hello world")
+      expect{diary_entry_1.reading_chunk(0, 1)}.to raise_error "WPM must be above zero"
+    end
+    
 
   end
 
