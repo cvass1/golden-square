@@ -25,18 +25,18 @@ focus on the details you see as important, not everything. The diagram below
 uses asciiflow.com but you could also use excalidraw.com, draw.io, or miro.com_
 
 ```
-┌────────────────────────────┐
-│ Diary                      │
-│                            │
-│ - add(diary_entry)         │
-│ - all                      │
-│ - return_diary_entry_contents (diary_entry) │
-│   => ["my contents"]           │
-| - find_best_entry_for_reading_time(wpm, minutes) |
-| - return_contacts_list     |
-| => ["07768846573", "07465968777"]  
-└───────────┬────────────────┘
-            │
+┌────────────────────────────────────────────────────┐
+│ Diary                                              │
+│                                                    │
+│ - add(diary_entry)                                 │
+│ - all                                              │
+│ - return_diary_entry_contents (diary_entry)        │
+│   => ["my contents"]                               │
+| -find_best_entry_for_reading_time(wpm, minutes)   |
+| - return_contacts_list                             |
+| => ["07768846573", "07465968777"]                  |
+└───────────┬────────────────────────────────────────┘
+            └────────────────────────────────────────────────────┐
             │ owns a list of
             ▼
 ┌─────────────────────────┐
@@ -48,6 +48,21 @@ uses asciiflow.com but you could also use excalidraw.com, draw.io, or miro.com_
 │   => #returns an integer  │
 └─────────────────────────┘
 
+┌────────────────────────────────────────────────────┐
+│ TodoList                                           │
+│                                                    │
+│ - add(todo)                                        │
+│ - all                                              │
+│   => [todo_1, todo_2]                              │               
+└───────────┬────────────────────────────────────────┘
+            │ owns a list of
+            ▼
+┌─────────────────────────┐
+│ Todo(task)              │
+│                         │
+│ - task                  │
+└─────────────────────────┘
+
 
 
 
@@ -56,33 +71,71 @@ uses asciiflow.com but you could also use excalidraw.com, draw.io, or miro.com_
 _Also design the interface of each class in more detail._
 
 ```ruby
-class MusicLibrary
+class Diary
   def initialize
-    # ...
   end
 
-  def add(track) # track is an instance of Track
-    # Track gets added to the library
-    # Returns nothing
+  def add(diary_entry)
+  # adds from the instance of diary_entry
+  # returns nothing
+  end
+
+  def return_diary_entry_contents(diary_entry)
+  # returns the contents from a given diary_entry instance
+  end
+  
+  def find_best_entry_for_reading_time(wpm, minutes)
+  # returns the diary_entry instance with the most appropriate reading time
+  end
+
+  def return_contacts_list
+  # searches all diary_entry contents for phone numbers
+  # returns a list of phone numbers
+  end
+end
+
+class DiaryEntry
+  def initialize("my_title", "my_contents")
+  end
+
+  def title
+    #returns the title
+  end
+
+  def contents
+    #returns the contents
+  end
+
+  def count_words
+    # counts the number of words in the contents
+    # returns an integer
+  end
+end
+
+class TodoList                                        
+  def initialize
+  end
+
+  def add(todo)
+    # adds an instance of todo to a list
+    # returns nothing
   end
 
   def all
-    # Returns a list of track objects
+    # returns the list of todos
   end
-  
-  def search_by_title(keyword) # keyword is a string
-    # Returns a list of tracks with titles that include the keyword
-  end
-end
+end 
 
-class Track
-  def initialize(title, artist) # title and artist are both strings
+class Todo
+  def initialize(task)
   end
 
-  def format
-    # Returns a string of the form "TITLE by ARTIST"
+  def task
+    # displays the task
   end
+
 end
+
 ```
 
 ## 3. Create Examples as Integration Tests
