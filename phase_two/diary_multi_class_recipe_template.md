@@ -147,48 +147,9 @@ combinations that reflect the ways in which the system will be used._
   diary = Diary.new
   entry1 = DiaryEntry.new("my_title","my_contents")
   diary.add(entry1)
-  result = diary.all
-  expect(result).to eq [entry1]
-# 2
-  diary = Diary.new
-  entry1 = DiaryEntry.new("my_title", "my_contents")
-  diary.add(entry1)
-  result = diary.count_words
-  expect(result).to eq 1
-# 3 
-  diary = Diary.new
-  entry1 = DiaryEntry.new("my_title", "my_contents")
-  entry2 = DiaryEntry.new("my_title", "my contents")
-  diary.add(entry1)
-  diary.add(entry2)
-  result = diary.count_words
-  expect(result).to eq 3
-# 4 
-  diary = Diary.new
-  entry = DiaryEntry.new("my_title", "hi there")
-  diary.add(entry)
-  result = diary.reading_time(1)
-  expect(result).to eq 2
-# 5 
-  diary = Diary.new
-  entry1 = DiaryEntry.new("my_title", "hi there")
-  entry2 = DiaryEntry.new("my_title", "my contents are here!")
-  diary.add(entry1)
-  diary.add(entry2)
-  result = diary.reading_time(2)
-  expect(result).to eq 3
-# 6
-  diary = Diary.new
-  entry1 = DiaryEntry.new("my_title", "hi there")
-  diary.add(entry1)
-  result = diary.find_best_entry_for_reading_time(10,1)
-  expect(result).to eq entry1
-# 7 
-  diary = Diary.new
-  entry1 = DiaryEntry.new("my_title", "hi there")
-  diary.add(entry1)
-  result = diary.find_best_entry_for_reading_time(1,1)
-  expect(result).to eq nil
+  result = diary.return_diary_entry_contents(entry1)
+  expect(result).to eq "my_contents"
+
 # 8
   diary = Diary.new
   entry1 = DiaryEntry.new("my_title", "hi there")
