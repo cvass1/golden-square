@@ -1,19 +1,18 @@
 class Todo
   def initialize(task) # task is a string
-    # ...
+    @todo = {name: task, complete: false}
+
   end
 
   def task
-    # Returns the task as a string
+    @todo[:name]
   end
 
   def mark_done!
-    # Marks the todo as done
-    # Returns nothing
+    @todo[:complete] = true
   end
 
   def done?
-    # Returns true if the task is done
-    # Otherwise, false
+    @todo[:complete]
   end
 end
