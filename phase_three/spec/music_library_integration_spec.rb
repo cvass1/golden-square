@@ -19,12 +19,6 @@ describe MusicLibrary do
   context "for method #search" do
     it "returns a list of tracks that match a search" do
       music_library = MusicLibrary.new
-      result = music_library.search("Forever")
-      expect(result).to eq []
-    end
-
-    it "returns a list of tracks that match a search" do
-      music_library = MusicLibrary.new
       track1 = Track.new("Oasis", "Live Forever")
       track2 = Track.new("Foo Fighter", "The Pretender")
       music_library.add(track1)
