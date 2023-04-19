@@ -3,10 +3,6 @@ require 'track'
 
 describe MusicLibrary do
   context "for method #all" do
-    it "returns an empty list when no tracks added" do
-      music_library = MusicLibrary.new
-      expect(music_library.all).to eq []
-    end 
 
     it "returns a list of tracks" do
       music_library = MusicLibrary.new
@@ -21,6 +17,12 @@ describe MusicLibrary do
   end
 
   context "for method #search" do
+    it "returns a list of tracks that match a search" do
+      music_library = MusicLibrary.new
+      result = music_library.search("Forever")
+      expect(result).to eq []
+    end
+
     it "returns a list of tracks that match a search" do
       music_library = MusicLibrary.new
       track1 = Track.new("Oasis", "Live Forever")
