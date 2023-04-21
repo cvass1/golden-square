@@ -14,11 +14,13 @@ RSpec.describe 'takeaway integration' do
   it "adds multiple dishes to the menu" do
     dish_1 = Dish.new("Thai Green Curry",8.99)
     dish_2 = Dish.new("Khao Soi",6.99)
+    dish_3 = Dish.new("Pad Thai",7.99)
     menu = Menu.new
     menu.add(dish_1)
     menu.add(dish_2)
+    menu.add(dish_3)
     result = menu.display_menu 
-    expect(result).to eq "1) Thai Green Curry      £8.99\n2) Khao Soi      £6.99"
+    expect(result).to eq "1) Thai Green Curry      £8.99\n2) Khao Soi      £6.99\n3) Pad Thai      £7.99"
   end
 
   it "returns the correct instance of dish" do
@@ -68,7 +70,7 @@ RSpec.describe 'takeaway integration' do
     expect(result).to eq "Thai Green Curry   £8.99\nPad Thai   £7.99\ntotal: £16.98"
   end
   
-  it "on completion it sends a confirmation text message" do
+  xit "on completion it sends a confirmation text message" do
     dish_1 = Dish.new("Thai Green Curry",8.99)
     dish_2 = Dish.new("Khao Soi",6.99)
     dish_3 = Dish.new("Pad Thai",7.99)

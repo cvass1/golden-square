@@ -96,13 +96,13 @@ _Examples of the classes being used together in different situations and
 combinations that reflect the ways in which the system will be used:_
 
 ```ruby
-# adds a dish to the menu
+# adds a dish to the menu and displays the menu
 dish_1 = Dish.new("Thai Green Curry",8.99)
 menu = Menu.new
 menu.add(dish_1)
 menu.display_menu # => "1) Thai Green Curry      £8.99"
 
-# adds multiple dishes to the menu
+# adds multiple dishes to the menu and displays the menu
 dish_1 = Dish.new("Thai Green Curry",8.99)
 dish_2 = Dish.new("Khao Soi",6.99)
 menu = Menu.new
@@ -135,7 +135,7 @@ menu.add(dish_1)
 order = Order.new
 menu_item = menu.menu_item(1)
 order.add(menu_item)
-order.receipt # => "1) Thai Green Curry      £8.99"
+order.receipt # => "Thai Green Curry   £8.99"
               #    total: £8.99"
 
 # adds multiple menu items to an order
@@ -151,8 +151,8 @@ menu_item = menu.menu_item(1)
 order.add(menu_item)
 menu_item = menu.menu_item(3)
 order.add(menu_item)
-order.receipt  # => "Thai Green Curry      £8.99"
-               # => "Pad Thai      £7.99"
+order.receipt  # => "Thai Green Curry   £8.99"
+               # => "Pad Thai   £7.99"
                #    total: £16.98"
 
 
