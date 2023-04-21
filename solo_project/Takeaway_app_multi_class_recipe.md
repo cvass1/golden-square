@@ -84,7 +84,6 @@ class Order
   end
 
   def complete
-    # returns a final receipt
     # sends a text confirming the order and providing a delivery time
   end
 end
@@ -105,11 +104,14 @@ menu.display_menu # => "1) Thai Green Curry      £8.99"
 # adds multiple dishes to the menu and displays the menu
 dish_1 = Dish.new("Thai Green Curry",8.99)
 dish_2 = Dish.new("Khao Soi",6.99)
+dish_3 = Dish.new("Pad Thai",7.99)
 menu = Menu.new
 menu.add(dish_1)
 menu.add(dish_2)
+menu.add(dish_3)
 menu.display_menu # => "1) Thai Green Curry      £8.99"
-                  #    "2) Khao Soi"      £6.99"
+                  #    "2) Khao Soi      £6.99"
+                  #    "3) Pad Thai      £7.99"
 
 
 # returns the correct instance of dish

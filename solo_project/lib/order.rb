@@ -20,7 +20,6 @@ class Order
   end
 
   def complete
-    # returns a final receipt
     # sends a text confirming the order and providing a delivery time
     fail "No items have been added to your order" if @order.length == 0
 

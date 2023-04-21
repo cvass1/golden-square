@@ -26,10 +26,12 @@ order_1.add(menu.menu_item(2))
 puts order_1.receipt + "\n "
 
 order_2 = Order.new
-order_2.add(menu.menu_item(2))
-order_2.add(menu.menu_item(4))
-puts order_2.receipt
-order_2.complete
+
+menu_2 = Menu.new
+menu_2.add(dish_5)
+puts menu_2.display_menu
+
+
 
 
 
