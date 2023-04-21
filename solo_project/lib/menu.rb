@@ -22,6 +22,8 @@ class Menu
   def menu_item(item_number)
     #returns the instance of Dish corresponding to the index(item_number) in the menu list
     fail "No dishes have been added to the menu" if @menu.length == 0
-
+    
+    fail "Menu Item #{item_number} does not exist, please review the Menu and try again" if (item_number) > @menu.length
+    @menu[item_number-1]
   end
 end

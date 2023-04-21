@@ -44,6 +44,21 @@ owns a full list of |         | owns a partial list of
               +-------------------+
 
 
+
+
+
++-------------------+             +--------------------+              +-------------------+
+| Order             |             | Menu              |              | Dish(name,price)  |
+|                   |             |                    |              |                   |
+|                  +------------>|  -add(dish)        +------------->| -name             |
+| -add(menu_item)   |   ownsa    |  -display_menu     | owns a full  | -price            |
+| -receipt          |   partial   |  -menu_item        |  list of     |                   |
+| -complete         |   list of  |                    |    dish    |                   |
++-------------------+    dish     +--------------------+  instances   +-------------------+
+                       instances
+                   (viamenu_item)
+
+
 ```
 
 _The interface of each class in more detail:_
@@ -132,6 +147,14 @@ menu.add(dish_1)
 menu.add(dish_2)
 menu.menu_item(2) # => dish_2
 
+# returns an error if user picks an item number that doesn't exist
+dish_1 = Dish.new("Thai Green Curry",8.99)
+dish_2 = Dish.new("Khao Soi",6.99)
+menu = Menu.new
+menu.add(dish_1)
+menu.add(dish_2)
+menu.menu_item(3) # => error message "Menu Item 3 does not exist, please review the Menu and try again"
+
 # adds a menu item to an order
 dish_1 = Dish.new("Thai Green Curry",8.99)
 menu = Menu.new
@@ -155,12 +178,12 @@ menu_item = menu.menu_item(1)
 order.add(menu_item)
 menu_item = menu.menu_item(3)
 order.add(menu_item)
-order.receipt  # => "1) Thai Green Curry      £8.99"
-               # => "3) Pad Thai      £7.99"
+order.receipt  # => "Thai Green Curry      £8.99"
+               # => "Pad Thai      £7.99"
                #    total: £16.98"
 
 
-# displays a final receipt and sends a confirmation text message
+# on completion it sends a confirmation text message
 dish_1 = Dish.new("Thai Green Curry",8.99)
 dish_2 = Dish.new("Khao Soi",6.99)
 dish_3 = Dish.new("Pad Thai",7.99)
@@ -173,11 +196,7 @@ menu_item = menu.menu_item(1)
 order.add(menu_item)
 menu_item = menu.menu_item(3)
 order.add(menu_item)
-order.complete # => "1) Thai Green Curry      £8.99"
-               # => "3) Pad Thai      £7.99"
-               #    total: £16.98"
-
-               # sends a text message confirmation: 
+order.complete # sends a text message confirmation: 
                # "Thank you! Your order was placed and will be delivered before 18:52"
 ```
 
