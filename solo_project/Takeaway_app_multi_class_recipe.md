@@ -20,8 +20,8 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 
 ## 2. Design the Class System
 
-_Diagram out the classes and their relationships using 
-asciiflow.com_
+_Diagram of the classes and their relationships using 
+asciiflow.com:_
 
 ```
  +--------------------+    +-------------------+
@@ -46,42 +46,66 @@ owns a full list of |         | owns a partial list of
 
 ```
 
-_Interface of each class in more detail._
+_The interface of each class in more detail:_
 
 ```ruby
-class MusicLibrary
-  def initialize
-    # ...
+class Dish
+  def initialize(name, price)
   end
 
-  def add(track) # track is an instance of Track
-    # Track gets added to the library
-    # Returns nothing
+  def name
+    # returns the name of the dish
   end
 
-  def all
-    # Returns a list of track objects
-  end
-  
-  def search_by_title(keyword) # keyword is a string
-    # Returns a list of tracks with titles that include the keyword
+  def price
+    # returns the price of the dish
   end
 end
 
-class Track
-  def initialize(title, artist) # title and artist are both strings
+class Menu
+  def initialize
+    # creates a menu list array where index will be used as an item_number
   end
 
-  def format
-    # Returns a string of the form "TITLE by ARTIST"
+  def add(dish) #dish is an instance of Dish
+    # adds a dish to the menu list
+    # returns nothing
   end
+
+  def display_menu
+    # returns the menu list of dishes with name and price
+  end
+
+  def menu_item(item_number)
+    # returns the instance of Dish corresponding to the index(item_number) in the menu list
+  end
+
+end
+
+class Order
+  def initialize
+    # creates an order list
+  end
+
+  def add(menu_item) #menu_item is the instance of Dish thats returned from Menu class menu_item method
+    # adds a dish to the order list
+    # returns nothing
+  end
+
+  def receipt
+    # returns a string with contents of the order list and a grand total cost
+  end
+
+  def complete
+    # returns a final receipt
+    # sends a text confirming the order and providing a delivery time
 end
 ```
 
 ## 3. Create Examples as Integration Tests
 
-_Create examples of the classes being used together in different situations and
-combinations that reflect the ways in which the system will be used._
+_Examples of the classes being used together in different situations and
+combinations that reflect the ways in which the system will be used:_
 
 ```ruby
 # EXAMPLE
@@ -93,6 +117,10 @@ track_2 = Track.new("Synaesthesia", "The Thrillseekers")
 library.add(track_1)
 library.add(track_2)
 library.all # => [track_1, track_2]
+
+# 
+
+
 ```
 
 ## 4. Create Examples as Unit Tests
@@ -106,6 +134,26 @@ a more granular level of detail._
 # Constructs a track
 track = Track.new("Carte Blanche", "Veracocha")
 track.title # => "Carte Blanche"
+
+
+# constructs a dish
+dish = Dish.new("Pad Thai",7.99)
+dish.name # => "Pad Thai"
+dish.price # => 7.99
+
+# displays empty menu list when no dishes are added
+menu = Menu.new
+menu.display_menu # => ""
+
+# returns an error if asked to retrieve a menu item when no dishes have been added
+menu = Menu.new
+menu.menu_item(1) # => error message: "No dishes have been added to the menu"
+
+# gives an empty receipt if no menu items have been added to an order
+order = Order.new
+order.receipt # => "grand total: £0.00"
+
+
 ```
 
 _Encode each example as a test. You can add to the above list as you go._
