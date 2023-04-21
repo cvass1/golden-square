@@ -79,7 +79,6 @@ class Menu
   def menu_item(item_number)
     # returns the instance of Dish corresponding to the index(item_number) in the menu list
   end
-
 end
 
 class Order
@@ -99,6 +98,7 @@ class Order
   def complete
     # returns a final receipt
     # sends a text confirming the order and providing a delivery time
+  end
 end
 ```
 
@@ -192,9 +192,9 @@ dish = Dish.new("Pad Thai",7.99)
 dish.name # => "Pad Thai"
 dish.price # => 7.99
 
-# displays empty menu list when no dishes are added
+# returns an error when no dishes are added
 menu = Menu.new
-menu.display_menu # => ""
+menu.display_menu # => error message: "No dishes have been added to the menu"
 
 # returns an error if asked to retrieve a menu item when no dishes have been added
 menu = Menu.new
@@ -206,7 +206,7 @@ order.receipt # => "total: £0.00"
 
 # returns an error if no menu items have been added to an order on completion
 order = Order.new
-order.complete # => error message: "No items were added to your order"
+order.complete # => error message: "No items have been added to your order"
 
 ```
 
