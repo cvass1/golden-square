@@ -42,7 +42,7 @@ RSpec.describe 'takeaway integration' do
     expect{menu.menu_item(3)}.to raise_error "Menu Item 3 does not exist, please review the Menu and try again"
   end
 
-  it "adds a menu item to an order" do
+  it "adds a menu item to an order and displays an itemised receipt" do
     dish_1 = Dish.new("Thai Green Curry",8.99)
     menu = Menu.new
     menu.add(dish_1)
@@ -53,7 +53,7 @@ RSpec.describe 'takeaway integration' do
     expect(result).to eq "Thai Green Curry   £8.99\ntotal: £8.99"
   end
 
-  it "adds multiple menu items to an order" do
+  it "adds multiple menu items to an order and displays an itemised receipt" do
     dish_1 = Dish.new("Thai Green Curry",8.99)
     dish_2 = Dish.new("Khao Soi",6.99)
     dish_3 = Dish.new("Pad Thai",7.99)

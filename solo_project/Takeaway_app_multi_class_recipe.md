@@ -130,7 +130,7 @@ menu.add(dish_1)
 menu.add(dish_2)
 menu.menu_item(3) # => error message "Menu Item 3 does not exist, please review the Menu and try again"
 
-# adds a menu item to an order
+# adds a menu item to an order and displays an itemised receipt
 dish_1 = Dish.new("Thai Green Curry",8.99)
 menu = Menu.new
 menu.add(dish_1)
@@ -140,7 +140,7 @@ order.add(menu_item)
 order.receipt # => "Thai Green Curry   £8.99"
               #    total: £8.99"
 
-# adds multiple menu items to an order
+# adds multiple menu items to an order and displays an itemised receipt
 dish_1 = Dish.new("Thai Green Curry",8.99)
 dish_2 = Dish.new("Khao Soi",6.99)
 dish_3 = Dish.new("Pad Thai",7.99)
