@@ -1,4 +1,4 @@
-# {Takeaway App} - Multi-Class Planned Design Recipe
+# Takeaway App - Multi-Class Planned Design Recipe
 
 ## 1. Describe the Problem
 
@@ -23,6 +23,7 @@ I would like to receive a text such as "Thank you! Your order was placed and wil
 _Diagram out the classes and their relationships using 
 asciiflow.com_
 
+```
  +--------------------+    +-------------------+
  |  Menu              |    | Order             |
  |                    |    |                   |
