@@ -108,19 +108,77 @@ _Examples of the classes being used together in different situations and
 combinations that reflect the ways in which the system will be used:_
 
 ```ruby
-# EXAMPLE
+# adds a dish to the menu
+dish_1 = Dish.new("Thai Green Curry",8.99)
+menu = Menu.new
+menu.add(dish_1)
+menu.display_menu # => "1) Thai Green Curry      £8.99"
 
-# Gets all tracks
-library = MusicLibrary.new
-track_1 = Track.new("Carte Blanche", "Veracocha")
-track_2 = Track.new("Synaesthesia", "The Thrillseekers")
-library.add(track_1)
-library.add(track_2)
-library.all # => [track_1, track_2]
+# adds multiple dishes to the menu
+dish_1 = Dish.new("Thai Green Curry",8.99)
+dish_2 = Dish.new("Khao Soi",6.99)
+menu = Menu.new
+menu.add(dish_1)
+menu.add(dish_2)
+menu.display_menu # => "1) Thai Green Curry      £8.99"
+                  #    "2) Khao Soi"      £6.99"
 
-# 
+
+# returns the correct instance of dish
+dish_1 = Dish.new("Thai Green Curry",8.99)
+dish_2 = Dish.new("Khao Soi",6.99)
+menu = Menu.new
+menu.add(dish_1)
+menu.add(dish_2)
+menu.menu_item(2) # => dish_2
+
+# adds a menu item to an order
+dish_1 = Dish.new("Thai Green Curry",8.99)
+menu = Menu.new
+menu.add(dish_1)
+order = Order.new
+menu_item = menu.menu_item(1)
+order.add(menu_item)
+order.receipt # => "1) Thai Green Curry      £8.99"
+              #    total: £8.99"
+
+# adds multiple menu items to an order
+dish_1 = Dish.new("Thai Green Curry",8.99)
+dish_2 = Dish.new("Khao Soi",6.99)
+dish_3 = Dish.new("Pad Thai",7.99)
+menu = Menu.new
+menu.add(dish_1)
+menu.add(dish_2)
+menu.add(dish_3)
+order = Order.new
+menu_item = menu.menu_item(1)
+order.add(menu_item)
+menu_item = menu.menu_item(3)
+order.add(menu_item)
+order.receipt  # => "1) Thai Green Curry      £8.99"
+               # => "3) Pad Thai      £7.99"
+               #    total: £16.98"
 
 
+# displays a final receipt and sends a confirmation text message
+dish_1 = Dish.new("Thai Green Curry",8.99)
+dish_2 = Dish.new("Khao Soi",6.99)
+dish_3 = Dish.new("Pad Thai",7.99)
+menu = Menu.new
+menu.add(dish_1)
+menu.add(dish_2)
+menu.add(dish_3)
+order = Order.new
+menu_item = menu.menu_item(1)
+order.add(menu_item)
+menu_item = menu.menu_item(3)
+order.add(menu_item)
+order.complete # => "1) Thai Green Curry      £8.99"
+               # => "3) Pad Thai      £7.99"
+               #    total: £16.98"
+
+               # sends a text message confirmation: 
+               # "Thank you! Your order was placed and will be delivered before 18:52"
 ```
 
 ## 4. Create Examples as Unit Tests
@@ -129,13 +187,6 @@ _Create examples, where appropriate, of the behaviour of each relevant class at
 a more granular level of detail._
 
 ```ruby
-# EXAMPLE
-
-# Constructs a track
-track = Track.new("Carte Blanche", "Veracocha")
-track.title # => "Carte Blanche"
-
-
 # constructs a dish
 dish = Dish.new("Pad Thai",7.99)
 dish.name # => "Pad Thai"
@@ -151,8 +202,11 @@ menu.menu_item(1) # => error message: "No dishes have been added to the menu"
 
 # gives an empty receipt if no menu items have been added to an order
 order = Order.new
-order.receipt # => "grand total: £0.00"
+order.receipt # => "total: £0.00"
 
+# returns an error if no menu items have been added to an order on completion
+order = Order.new
+order.complete # => error message: "No items were added to your order"
 
 ```
 
