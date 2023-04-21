@@ -24,41 +24,16 @@ _Diagram of the classes and their relationships using
 asciiflow.com:_
 
 ```
- +--------------------+    +-------------------+
- |  Menu              |    | Order             |
- |                    |    |                   |
- |  -add(dish)        |    | -add(dish)        |
- |  -display_menu     |    | -receipt          |
- |                    |    |                   |
- +------------------+-+    +--+----------------+
-                    |         |
-owns a full list of |         | owns a partial list of
-                    |         |
-                    v         v
-              +-------------------+
-              | Dish(name,price)  |
-              |                   |
-              | -name             |
-              | -price            |
-              |                   |
-              +-------------------+
-
-
-
-
-
 +-------------------+             +--------------------+              +-------------------+
-| Order             |             | Menu              |              | Dish(name,price)  |
+| Order             |             |  Menu              |              | Dish(name,price)  |
 |                   |             |                    |              |                   |
-|                  +------------>|  -add(dish)        +------------->| -name             |
-| -add(menu_item)   |   ownsa    |  -display_menu     | owns a full  | -price            |
+|                   +------------>|  -add(dish)        +------------->| -name             |
+| -add(menu_item)   |   owns a    |  -display_menu     | owns a full  | -price            |
 | -receipt          |   partial   |  -menu_item        |  list of     |                   |
-| -complete         |   list of  |                    |    dish    |                   |
+| -complete         |   list of   |                    |    dish      |                   |
 +-------------------+    dish     +--------------------+  instances   +-------------------+
                        instances
-                   (viamenu_item)
-
-
+                   (via menu_item)
 ```
 
 _The interface of each class in more detail:_
