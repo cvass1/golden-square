@@ -70,7 +70,7 @@ RSpec.describe 'takeaway integration' do
     expect(result).to eq "Thai Green Curry   £8.99\nPad Thai   £7.99\ntotal: £16.98"
   end
   
-  xit "on completion it sends a confirmation text message" do
+  it "on completion it sends a confirmation text message" do
     dish_1 = Dish.new("Thai Green Curry",8.99)
     dish_2 = Dish.new("Khao Soi",6.99)
     dish_3 = Dish.new("Pad Thai",7.99)
@@ -83,8 +83,9 @@ RSpec.describe 'takeaway integration' do
     order.add(menu_item)
     menu_item = menu.menu_item(3)
     order.add(menu_item)
-    result = order.complete
-    expect(result).to eq 
+    fake_time = Time.new(2023, 04, 21, 18, 07, 00, "+00:00")
+    result = order.complete(fake_time)
+    expect(result).to eq "Thank you! Your order was placed and will be delivered before 18:52"
                  # sends a text message confirmation: 
                  # "Thank you! Your order was placed and will be delivered before 18:52"
   end

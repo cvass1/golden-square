@@ -25,6 +25,9 @@ order_1.add(menu.menu_item(5))
 order_1.add(menu.menu_item(2))
 puts order_1.receipt + "\n "
 
+
+puts order_1.complete
+
 order_2 = Order.new
 
 menu_2 = Menu.new
