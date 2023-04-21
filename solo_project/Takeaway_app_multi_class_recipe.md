@@ -34,6 +34,17 @@ asciiflow.com:_
 +-------------------+    dish     +--------------------+  instances   +-------------------+
                        instances
                    (via menu_item)
+
+
+
++-------------------+                +--------------------+                   +-------------------+
+| Order             |                | Menu              |                   | Dish(name,price)  |
+|                   |                |                    |                   |                   |
+| -add(menu_item)   |                |  -add(dish)        |                   | -name             |
+| -receipt          | owns a partial |  -display_menu     | owns a full list  | -price            |
+| -complete         |  list of dish  |  -menu_item        | of dish instances |                   |
+|                   |   instances   |                    |                 |                   |
++-------------------+(viamenu_item) +--------------------+                   +-------------------+
 ```
 
 _The interface of each class in more detail:_
