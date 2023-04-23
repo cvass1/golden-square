@@ -26,7 +26,7 @@ class Order
     fail "No items have been added to your order" if @order.length == 0
     
     delivery_minutes = 45 #hardcoded estimated time for delivery
-    delivery_time = (current_time + delivery_minutes*60).strftime("%H:%M") # extimate delivery time to be current hour/mins plus time taken for delivery
+    delivery_time = (current_time + delivery_minutes*60).strftime("%H:%M") 
     
     confirmation_message = "Thank you! Your order was placed and will be delivered before #{delivery_time}." # \nOrder Summary: \n" + receipt
 
