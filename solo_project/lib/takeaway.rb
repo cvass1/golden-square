@@ -28,11 +28,6 @@ puts order_1.receipt + "\n "
 
 puts order_1.complete
 
-order_2 = Order.new
-
-menu_2 = Menu.new
-menu_2.add(dish_5)
-puts menu_2.display_menu
 
 
 

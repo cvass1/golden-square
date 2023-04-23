@@ -170,9 +170,25 @@ order = Order.new
 menu_item = menu.menu_item(1)
 order.add(menu_item)
 menu_item = menu.menu_item(3)
-order.add(menu_item)
-order.complete # sends a text message confirmation: 
-               # "Thank you! Your order was placed and will be delivered before 18:52"
+order.add(menu_item)    
+fake_time = Time.new(2023, 04, 21, 18, 07, 00, "+00:00")
+fake_requester = double(:requester)
+account_sid = ENV["TWILIO_ACCOUNT_SID"]
+auth_token = ENV["TWILIO_AUTH_TOKEN"]
+to_number = ENV["MY_PHONE_NUMBER"]
+from_number = ENV["TWILIO_PHONE_NUMBER"]
+
+fake_API_response = "<Twilio.Api.V2010.MessageInstance account_sid: #{account_sid} sid: #{account_sid}>"
+
+allow(fake_requester).to receive(:new).with(account_sid, auth_token).and_return(fake_requester)
+allow(fake_requester).to receive(:messages).and_return(fake_requester)
+allow(fake_requester).to receive(:create).with(body: "Thank you! Your order was placed and will be delivered before 18:52.",
+  to: to_number,
+  from: from_number,).and_return(fake_API_response)
+result = order.complete(fake_time,fake_requester)
+expect(result).to eq fake_API_response 
+# sends a text message confirmation: 
+# "Thank you! Your order was placed and will be delivered before 18:52"
 ```
 
 ## 4. Create Examples as Unit Tests
