@@ -19,14 +19,13 @@ menu.add(dish_5)
 puts menu.display_menu + "\n "
 
 order_1 = Order.new
-item = menu.menu_item(2)
 order_1.add(menu.menu_item(1))
 order_1.add(menu.menu_item(5))
 order_1.add(menu.menu_item(2))
 puts order_1.receipt + "\n "
 
-
 puts order_1.complete
+
 
 
 
